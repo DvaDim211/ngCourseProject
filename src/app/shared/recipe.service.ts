@@ -36,15 +36,16 @@ export class RecipeService {
     return this.recipes.slice();
   }
 
+  getRecipe(id: number) {
+    return this.recipes[id];
+  }
+
+  getIndex () {
+
+  }
+
   onIngredientsAddedToSL(ingredients: Ingredient[]) {
     this.shoppingListService.onIngredientsAdded(ingredients);
   };
-
-
-  // onSelectedRecipe(recipeItem: Recipe) {
-  //   this.selectedRecipe.emit(recipeItem);
-  // };
-
-
 
 }
