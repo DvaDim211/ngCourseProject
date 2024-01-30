@@ -22,16 +22,28 @@ export class ShoppingListService {
     return this.ingredients.slice();
   }
 
+  getIngredient(index: number) {
+    return this.ingredients[index];
+  }
+
   onIngredientAdded(ingredient: Ingredient) {
     this.ingredients.push(ingredient);
     this.ingredientAdded.next(this.ingredients.slice());
   };
 
   onIngredientsAdded(ingredients: Ingredient[]) {
-    // for (let ingredient of ingredients) {
-    //   this.onIngredientAdded(ingredient);
-    // }
     this.ingredients.push(...ingredients);
     this.ingredientAdded.next(this.ingredients.slice());
   };
+
+  editIngredient(index: number, newIngredient: Ingredient) {
+    this.ingredients[index] = newIngredient;
+    this.ingredientAdded.next(this.ingredients.slice());
+  }
+
+  deleteIngredient(index: number) {
+    this.ingredients.splice(index, 1);
+    this.ingredientAdded.next(this.ingredients.slice());
+  }
+
 }
